@@ -98,11 +98,11 @@ namespace Calculator {
 
 	protected:
 
-	private:
-        System::Double num1 = 0;
-        System::Double num2 = 0;
 		/// <summary>
 		/// Required designer variable.
+        private:
+        System::Double num1 = 0;
+        System::Double num2 = 0;
 		/// </summary>
 
 
