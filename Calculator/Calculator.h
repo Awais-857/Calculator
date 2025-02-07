@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "string"
-
 namespace Calculator {
 
 	using namespace System;
@@ -9,7 +8,7 @@ namespace Calculator {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+    using namespace std;
 	/// <summary>
 	/// Summary for Calculator
 	/// </summary>
@@ -668,10 +667,10 @@ private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs^ e) {
     this->label1->Text = this->tbInput->Text + "X";
-    this->tbInput->Text = "";
     if (this->num1 == 0) {
-        this->num1 = std::stod(this->Text);
+        this->num1 = Convert::ToDouble(this->tbInput->Text);
     }
+    this->tbInput->Text = "";
 }
 private: System::Void btnDiff_Click(System::Object^ sender, System::EventArgs^ e) {
     this->label1->Text = this->tbInput->Text + "-";
