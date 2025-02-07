@@ -112,6 +112,15 @@ namespace Calculator {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+            this->btnSum->Click += gcnew System::EventHandler(this, &Calculator::btnSum_Click);
+            this->btnDiff->Click += gcnew System::EventHandler(this, &Calculator::btnDiff_Click);
+            this->btnProduct->Click += gcnew System::EventHandler(this, &Calculator::btnProduct_Click);
+            this->btnDivide->Click += gcnew System::EventHandler(this, &Calculator::btnDivide_Click);
+            this->btnEqual->Click += gcnew System::EventHandler(this, &Calculator::btnEqual_Click);
+            this->btnC->Click += gcnew System::EventHandler(this, &Calculator::btnC_Click);
+            this->btnCE->Click += gcnew System::EventHandler(this, &Calculator::btnCE_Click);
+            this->btnX->Click += gcnew System::EventHandler(this, &Calculator::btnX_Click);
+
             this->components = (gcnew System::ComponentModel::Container());
             this->tbInput = (gcnew System::Windows::Forms::TextBox());
             this->tbLayout = (gcnew System::Windows::Forms::TableLayoutPanel());
@@ -726,15 +735,21 @@ private: System::Void btn9_Click(System::Object^ sender, System::EventArgs^ e) {
 private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ e) {
     if (operation != "")
     {
-        num2 = double.Parse(tbInput.Text);
+        num2 = double::Parse(tbInput->Text);
         num1 = Calculate(num1, num2, operation);
-        tbInput.Text = num1.ToString();
+        tbInput->Text = num1.ToString();
         operation = "";
         isNewEntry = true;
     }
+    else
+    {
+        // No operator was clicked before `=`
+        tbInput->Text = num1.ToString();
+    }
+
 }
 // Helper method: Performs the actual calculation
-private double Calculate(double num1, double num2, string op)
+private: System::Double Calculate(System::Double num1, System::Double num2, System::String^ op)
 {
     switch (op)
     {
@@ -788,13 +803,14 @@ private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^
     {
         if (operation != "")
         {
-            num2 = double.Parse(TextBox.Text);
+            num2 = double::Parse(tbInput->Text);
             num1 = Calculate(num1, num2, operation);
-            TextBox.Text = num1.ToString();
+            tbInput->Text = num1.ToString();
+
         }
         else
         {
-            num1 = double.Parse(TextBox.Text);
+            num1 = double.Parse(tbInput.Text);
         }
     }
 
@@ -808,13 +824,14 @@ private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs
     {
         if (operation != "")
         {
-            num2 = double.Parse(TextBox.Text);
+            num2 = double::Parse(tbInput->Text);
             num1 = Calculate(num1, num2, operation);
-            TextBox.Text = num1.ToString();
+            tbInput->Text = num1.ToString();
+
         }
         else
         {
-            num1 = double.Parse(TextBox.Text);
+            num1 = double.Parse(tbInput.Text);
         }
     }
 
@@ -862,9 +879,17 @@ private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e)
     isNewEntry = true;
 }
 private: System::Void btnDecimal_Click(System::Object^ sender, System::EventArgs^ e) {
-    this->tbInput->Text += ".";
+    if (!tbInput->Text->Contains(".")) {
+        tbInput->Text += ".";
+    }    
 }
 private: System::Void btnInverse_Click(System::Object^ sender, System::EventArgs^ e) {
+    if (tbInput->Text->Length > 0)
+    {
+        double value = double::Parse(tbInput->Text);
+        value = -value;
+        tbInput->Text = value.ToString();
+    }
 }
 private: System::Void contextMenuStrip1_Opening(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
 }
