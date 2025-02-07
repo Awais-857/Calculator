@@ -788,13 +788,13 @@ private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^
     {
         if (operation != "")
         {
-            num2 = double.Parse(textBox1.Text);
+            num2 = double.Parse(TextBox.Text);
             num1 = Calculate(num1, num2, operation);
-            textBox1.Text = num1.ToString();
+            TextBox.Text = num1.ToString();
         }
         else
         {
-            num1 = double.Parse(textBox1.Text);
+            num1 = double.Parse(TextBox.Text);
         }
     }
 
@@ -808,13 +808,13 @@ private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs
     {
         if (operation != "")
         {
-            num2 = double.Parse(textBox1.Text);
+            num2 = double.Parse(TextBox.Text);
             num1 = Calculate(num1, num2, operation);
-            textBox1.Text = num1.ToString();
+            TextBox.Text = num1.ToString();
         }
         else
         {
-            num1 = double.Parse(textBox1.Text);
+            num1 = double.Parse(TextBox.Text);
         }
     }
 
@@ -828,13 +828,13 @@ private: System::Void btnDiff_Click(System::Object^ sender, System::EventArgs^ e
     {
         if (operation != "")
         {
-            num2 = double.Parse(textBox1.Text);
+            num2 = double.Parse(TextBox.Text);
             num1 = Calculate(num1, num2, operation);
-            textBox1.Text = num1.ToString();
+            TextBox.Text = num1.ToString();
         }
         else
         {
-            num1 = double.Parse(textBox1.Text);
+            num1 = double.Parse(TextBox.Text);
         }
     }
 
@@ -848,13 +848,13 @@ private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e)
     {
         if (operation != "")
         {
-            num2 = double.Parse(textBox1.Text);
+            num2 = double.Parse(TextBox.Text);
             num1 = Calculate(num1, num2, operation);
-            textBox1.Text = num1.ToString();
+            TextBox.Text = num1.ToString();
         }
         else
         {
-            num1 = double.Parse(textBox1.Text);
+            num1 = double.Parse(TextBox.Text);
         }
     }
 
