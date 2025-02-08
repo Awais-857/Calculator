@@ -1,7 +1,13 @@
 ﻿#pragma once
-#include <string>
+#include "string"
 namespace Calculator {
 
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
 	/// <summary>
 	/// Summary for Calculator
 	/// </summary>
@@ -81,16 +87,16 @@ namespace Calculator {
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
     private: System::ComponentModel::IContainer^ components;
-    private: System::Double num1 = 0;
-    private: System::Double num2 = 0;
-    private: System::String^ operation = "";
-    private: System::Boolean isNewEntry = true;
 
-    protected:
 
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+
+		/// <summary>
+		/// Required designer variable.
+        private: System::Double num1 = 0;
+        private: System::Double num2 = 0;
+        private: System::String^ operation = "";
+        private: System::Boolean isNewEntry = true;
+		/// </summary>
 
 
 #pragma region Windows Form Designer generated code
@@ -589,124 +595,126 @@ namespace Calculator {
 
         }
 #pragma endregion
+	private: System::Void tableLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
 private: System::Void btn0_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn1_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn2_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn3_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn4_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn5_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn6_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn7_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn8_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btn9_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn->Text;
+        this->tbInput->Text = btn.Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn->Text;
+        this->tbInput->Text += btn.Text;
     }
 }
 private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -720,25 +728,29 @@ private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ 
     }
 }
 // Helper method: Performs the actual calculation
-private: double Calculate(double num1, double num2, System::String^ op) {
+private double Calculate(double num1, double num2, string op)
+{
     if (op == "+") return num1 + num2;
     else if (op == "-") return num1 - num2;
     else if (op == "*") return num1 * num2;
-    else if (op == "/") {
-        if (num2 == 0) {
-            throw gcnew System::DivideByZeroException("Cannot divide by zero");
-        }
-        else return num1 / num2;
-    }
-    else if (op == "%") return fmod(num1, num2);
+    else if (op == "/") return num2 != 0 ? num1 / num2 : 0; // Prevent division by zero
     else return num2;
+}
+private: System::Void Calculator_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void tbInput_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btnmodulus_Click(System::Object^ sender, System::EventArgs^ e) {
+    this->label1->Text = this->tbInput->Text + "%";
+    this->tbInput->Text = "";
 }
 private: System::Void btnCE_Click(System::Object^ sender, System::EventArgs^ e) {
     this->tbInput->Text = "0";
+    isNewEntry = true;
 }
 private: System::Void btnC_Click(System::Object^ sender, System::EventArgs^ e) {
     this->tbInput->Text = "0";
-    this->label1->Text = "";
+    label1.Text = "";
     num1 = 0;
     num2 = 0;
     operation = "";
@@ -747,12 +759,18 @@ private: System::Void btnC_Click(System::Object^ sender, System::EventArgs^ e) {
 private: System::Void btnX_Click(System::Object^ sender, System::EventArgs^ e) {
     if (this->tbInput->Text->Length > 1)
     {
-        this->tbInput->Text = this->tbInput->Text->Substring(0, this->tbInput->Text->Length - 1);
+        this->tbInput->Text = this->tbInput->Text.Substring(0, this->tbInput->Text->Length - 1);
     }
     else
     {
         this->tbInput->Text = "0";
     }
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
@@ -771,7 +789,7 @@ private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^
         }
     }
 
-    operation = btn->Text;
+    operation = btn.Text;
     isNewEntry = true;
 }
 private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -791,7 +809,7 @@ private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs
         }
     }
 
-    operation = btn->Text;
+    operation = btn.Text;
     isNewEntry = true;
 }
 private: System::Void btnDiff_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -811,7 +829,7 @@ private: System::Void btnDiff_Click(System::Object^ sender, System::EventArgs^ e
         }
     }
 
-    operation = btn->Text;
+    operation = btn.Text;
     isNewEntry = true;
 }
 private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -831,18 +849,15 @@ private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e)
         }
     }
 
-    operation = btn->Text;
-    this->label1->Text = num1.ToString() + " " + operation;
+    operation = btn.Text;
     isNewEntry = true;
 }
 private: System::Void btnDecimal_Click(System::Object^ sender, System::EventArgs^ e) {
-    if (!this->tbInput->Text->Contains(".")) {
-        this->tbInput->Text += ".";
-    }
+    this->tbInput->Text += ".";
 }
 private: System::Void btnInverse_Click(System::Object^ sender, System::EventArgs^ e) {
-    double value = System::Convert::ToDouble(this->tbInput->Text);
-    value = -value;
-    this->tbInput->Text = value.ToString();
+}
+private: System::Void contextMenuStrip1_Opening(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
 }
 };
+}
