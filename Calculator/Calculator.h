@@ -734,7 +734,7 @@ private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ 
     }
 }
 // Helper method: Performs the actual calculation
-       private double Calculate(double num1, double num2, System::String^ op)
+       private: double Calculate(double num1, double num2, System::String^ op)
 {
     switch (op)
     {
@@ -766,9 +766,9 @@ private: System::Void btnC_Click(System::Object^ sender, System::EventArgs^ e) {
     isNewEntry = true;
 }
 private: System::Void btnX_Click(System::Object^ sender, System::EventArgs^ e) {
-    if (this->tbInput->Text.Length > 1)
+    if (this->tbInput->Text->Length > 1)
     {
-        this->tbInput->Text = this->tbInput->Text.Substring(0, this->tbInput->Text.Length - 1);
+        this->tbInput->Text = this->tbInput->Text->Substring(0, this->tbInput->Text->Length - 1);
     }
     else
     {
