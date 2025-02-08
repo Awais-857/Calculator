@@ -736,14 +736,11 @@ private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ 
 // Helper method: Performs the actual calculation
        private: double Calculate(double num1, double num2, System::String^ op)
 {
-    switch (op)
-    {
-        case "+": return num1 + num2;
-        case "-": return num1 - num2;
-        case "*": return num1 * num2;
-        case "/": return num2 != 0 ? num1 / num2 : 0; // Prevent division by zero
-        default: return num2;
-    }
+    if (op == "+") return num1 + num2;
+    else if (op == "-") return num1 - num2;
+    else if (op == "*") return num1 * num2;
+    else if (op == "/") return num2 != 0 ? num1 / num2 : 0; // Prevent division by zero
+    else return num2;
 }
 private: System::Void Calculator_Load(System::Object^ sender, System::EventArgs^ e) {
 }
