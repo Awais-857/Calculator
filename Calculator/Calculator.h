@@ -601,120 +601,120 @@ private: System::Void btn0_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn1_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn2_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn3_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn4_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn5_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn6_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn7_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn8_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btn9_Click(System::Object^ sender, System::EventArgs^ e) {
     Button^ btn = dynamic_cast<Button^>(sender);
     if (isNewEntry)
     {
-        this->tbInput->Text = btn.Text;
+        this->tbInput->Text = btn->Text;
         isNewEntry = false;
     }
     else
     {
-        this->tbInput->Text += btn.Text;
+        this->tbInput->Text += btn->Text;
     }
 }
 private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -728,7 +728,7 @@ private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ 
     }
 }
 // Helper method: Performs the actual calculation
-private double Calculate(double num1, double num2, string op)
+private: double Calculate(double num1, double num2, System::String^ op)
 {
     if (op == "+") return num1 + num2;
     else if (op == "-") return num1 - num2;
@@ -750,7 +750,7 @@ private: System::Void btnCE_Click(System::Object^ sender, System::EventArgs^ e) 
 }
 private: System::Void btnC_Click(System::Object^ sender, System::EventArgs^ e) {
     this->tbInput->Text = "0";
-    label1.Text = "";
+    this->label1->Text = "";
     num1 = 0;
     num2 = 0;
     operation = "";
@@ -759,7 +759,7 @@ private: System::Void btnC_Click(System::Object^ sender, System::EventArgs^ e) {
 private: System::Void btnX_Click(System::Object^ sender, System::EventArgs^ e) {
     if (this->tbInput->Text->Length > 1)
     {
-        this->tbInput->Text = this->tbInput->Text.Substring(0, this->tbInput->Text->Length - 1);
+        this->tbInput->Text = this->tbInput->Text->Substring(0, this->tbInput->Text->Length - 1);
     }
     else
     {
@@ -789,7 +789,7 @@ private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^
         }
     }
 
-    operation = btn.Text;
+    operation = btn->Text;
     isNewEntry = true;
 }
 private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -809,7 +809,7 @@ private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs
         }
     }
 
-    operation = btn.Text;
+    operation = btn->Text;
     isNewEntry = true;
 }
 private: System::Void btnDiff_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -829,7 +829,7 @@ private: System::Void btnDiff_Click(System::Object^ sender, System::EventArgs^ e
         }
     }
 
-    operation = btn.Text;
+    operation = btn->Text;
     isNewEntry = true;
 }
 private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -849,7 +849,7 @@ private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e)
         }
     }
 
-    operation = btn.Text;
+    operation = btn->Text;
     isNewEntry = true;
 }
 private: System::Void btnDecimal_Click(System::Object^ sender, System::EventArgs^ e) {
