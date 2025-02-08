@@ -734,7 +734,7 @@ private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ 
     }
 }
 // Helper method: Performs the actual calculation
-private double Calculate(double num1, double num2, string op)
+       private double Calculate(double num1, double num2, string op)
 {
     switch (op)
     {
@@ -759,7 +759,7 @@ private: System::Void btnCE_Click(System::Object^ sender, System::EventArgs^ e) 
 }
 private: System::Void btnC_Click(System::Object^ sender, System::EventArgs^ e) {
     this->tbInput->Text = "0";
-    label1.Text = "";
+    this->label1->Text = "";
     num1 = 0;
     num2 = 0;
     operation = "";
