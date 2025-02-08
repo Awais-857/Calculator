@@ -1,13 +1,7 @@
 ﻿#pragma once
-#include "string"
+#include <string>
 namespace Calculator {
 
-	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
-	using namespace System::Drawing;
 	/// <summary>
 	/// Summary for Calculator
 	/// </summary>
@@ -104,10 +98,10 @@ namespace Calculator {
         private: System::Boolean isNewEntry = true;
 		/// </summary>
 
-
-#pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
+        private: System::Double m_num1 = 0;
+        private: System::Double m_num2 = 0;
+        private: System::String^ m_operation = "";
+        private: System::Boolean m_isNewEntry = true;
 		/// the contents of this method with the code editor.
 		/// </summary>
 		void InitializeComponent(void)
@@ -620,10 +614,10 @@ private: System::Void btn0_Click(System::Object^ sender, System::EventArgs^ e) {
         isNewEntry = false;
     }
     else
-    {
+    if (m_isNewEntry)
         this->tbInput->Text += btn.Text;
     }
-}
+        m_isNewEntry = false;
 private: System::Void btn1_Click(System::Object^ sender, System::EventArgs^ e) {
     Button btn = sender as Button;
     if (isNewEntry)
@@ -741,11 +735,11 @@ private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ 
         operation = "";
         isNewEntry = true;
     }
-    else
-    {
-        // No operator was clicked before `=`
+        m_num2 = double::Parse(tbInput->Text);
+        m_num1 = Calculate(m_num1, m_num2, m_operation);
+        tbInput->Text = m_num1.ToString();
         tbInput->Text = num1.ToString();
-    }
+        m_isNewEntry = true;
 
 }
 // Helper method: Performs the actual calculation
@@ -755,15 +749,15 @@ private: System::Double Calculate(System::Double num1, System::Double num2, Syst
     {
         case "+": return num1 + num2;
         case "-": return num1 - num2;
-        case "*": return num1 * num2;
+private: System::Double Calculate(System::Double m_num1, System::Double m_num2, System::String^ op)
         case "/": return num2 != 0 ? num1 / num2 : 0; // Prevent division by zero
         default: return num2;
     }
-}
-private: System::Void Calculator_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void tbInput_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
+        case "+": return m_num1 + m_num2;
+        case "-": return m_num1 - m_num2;
+        case "*": return m_num1 * m_num2;
+        case "/": return m_num2 != 0 ? m_num1 / m_num2 : 0; // Prevent division by zero
+        default: return m_num2;
 private: System::Void btnmodulus_Click(System::Object^ sender, System::EventArgs^ e) {
     this->label1->Text = this->tbInput->Text + "%";
     this->tbInput->Text = "";
@@ -816,12 +810,12 @@ private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^
 
     operation = btn.Text;
     isNewEntry = true;
-}
+            m_num1 = double.Parse(this->tbInput->Text);
 private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs^ e) {
     Button btn = sender as Button;
     
-    if (!isNewEntry)
-    {
+    m_operation = btn.Text;
+    m_isNewEntry = true;
         if (operation != "")
         {
             num2 = double::Parse(tbInput->Text);
@@ -851,13 +845,13 @@ private: System::Void btnDiff_Click(System::Object^ sender, System::EventArgs^ e
         }
         else
         {
-            num1 = double.Parse(TextBox.Text);
-        }
-    }
+            m_num2 = double::Parse(tbInput->Text);
+            m_num1 = Calculate(m_num1, m_num2, m_operation);
+            tbInput->Text = m_num1.ToString();
 
     operation = btn.Text;
     isNewEntry = true;
-}
+            m_num1 = double.Parse(TextBox.Text);
 private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e) {
     Button btn = sender as Button;
     
@@ -871,7 +865,7 @@ private: System::Void btnSum_Click(System::Object^ sender, System::EventArgs^ e)
         }
         else
         {
-            num1 = double.Parse(TextBox.Text);
+            num1 = double::Parse(tbInput->Text);
         }
     }
 
