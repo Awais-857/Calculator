@@ -734,7 +734,7 @@ private: System::Void btnEqual_Click(System::Object^ sender, System::EventArgs^ 
     }
 }
 // Helper method: Performs the actual calculation
-       private double Calculate(double num1, double num2, string op)
+       private double Calculate(double num1, double num2, System::String^ op)
 {
     switch (op)
     {
