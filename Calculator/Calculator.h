@@ -742,7 +742,6 @@ private: System::Void tbInput_TextChanged(System::Object^ sender, System::EventA
 }
 private: System::Void btnmodulus_Click(System::Object^ sender, System::EventArgs^ e) {
     this->label1->Text = this->tbInput->Text + "%";
-    this->tbInput->Text = "";
 }
 private: System::Void btnCE_Click(System::Object^ sender, System::EventArgs^ e) {
     this->tbInput->Text = "0";
@@ -790,6 +789,7 @@ private: System::Void btnDivide_Click(System::Object^ sender, System::EventArgs^
     }
 
     operation = btn->Text;
+    this->label1->Text = this->tbInput->Text + btn->Text;
     isNewEntry = true;
 }
 private: System::Void btnProduct_Click(System::Object^ sender, System::EventArgs^ e) {
